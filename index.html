@@ -1,24 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hangman - NBA Teams</title>
+	<meta charset="utf-8">
+	<title>Hangman Game</title>
+	<!--Bootstrap CDN-->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<!--Bootswatch-->
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/cyborg/bootstrap.min.css">
+	<!--External Javascript file-->
 </head>
 <body>
+	<div class="container">
+				
+		<div class="jumbotron">
+		  <h1>Hangman</h1>
+		  <p>This is a simple hangman game. Try to guess the name of the NBA team. You have 8 tries to guess correctly. Good luck!</p>
+		</div>
 
-<h1>Hangman - NBA Teams</h1>
 
-<p>Press any key to get started</p>
+		<div class="card mb-4">
+		  <div class="card-header">
+		    How to Play
+		  </div>
+		  <div class="card-body">
+		    <ol>
+		    	<li>Press any key to begin</li>
+		    		<info>When you press a key, the game starts, and the computer generates a random team name for you to guess from a pre-defined list.</info>
+		    		<info> You have 8 guesses to guess the word correctly. When you run out guesses, you lose. Game over.
 
-<p>Wins</p>
+		    	<li>Press a letter on the keyboard. The computer determines if the letter you pressed is in the word. </li>
+		    		<ul>
+		    			<li>If the letter you guessed is found in the word, you guessed correctly. The letter appears in the appropriate blank(s).
+		    			<li>
+		    				<info>If the letter you guessed is not in the word, you guessed incorrectly. The letter is added to the "Letters Already Guessed" section.</info>
+		    				<info>The number of guesses remaining decreases by 1.</info>
+		    		</ul>
+		    	<li>If you correctly guess all the letters in the word before the number of guesses remaining reaches 0, you win.</li>
+		    		<info>Else, you lose. Please try again.</info>
+		  </div>
+		</div>
 
-<p>Current Word</p>
+		<div class="card mb-4">
+		  <div class="card-header">
+		    Current Word
+		  </div>
+		  <div class="card-body">
+		    <h2 id="underscore">_ _ _ _ _ _ _ _ _ _ </h2>
+		  </div>
+		</div>
 
-<p> _ _ _ _ _ _ _ </p>
+		<div class="card mb-4">
+		  <div class="card-body">
+		  	Letters You Already Guessed: <span id="lettersGuessed"> A F H Y Z T</span>
+		  </div>
+		</div>
 
-<p>Number of Guesses Remaining </p>
+		<div class="card mb-4">
+		  <div class="card-body">
+		  	Number of Guesses Remaining:  <span id="guessesLeft">8</span>
+		  </div>
+		</div>
 
-<p>13</p>
+		<div class="card mb-4">
+		  <div class="card-body">
+		  	Wins: <span id="wins">5</span>
+		  </div>
+		</div>
 
-<p>Letters Already Guessed</p>
+		<div class="card mb-4">
+		  <div class="card-body">
+		  	Losses: <span id="losses">12</span>
+		  </div>
+		</div>
+	</div>
+
+	<!--External Javascript file-->
+	<script src="assets/javascript/game2.js"></script>
+
 </body>
 </html>
