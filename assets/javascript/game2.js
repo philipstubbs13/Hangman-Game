@@ -7,7 +7,7 @@
 	//Computer chooses random word from list
 	var randomWord = "";
 
-	//Array/list of letters in word
+	//Array/list of letters in a word
 	var lettersInWord = [];
 
 	//Number of underscores
@@ -16,7 +16,7 @@
 
 	var underscoresSuccesses = [];
 
-	//Array/list of letters not in word.
+	//Array/list of letters not in a word.
 	var lettersNotInWord = [""]; 
 
 	//wins, losses, guesses remaining
@@ -24,23 +24,30 @@
 	var losses = 0;
 	var guessesRemainder = 8;
 
+	//User's guess - the letter the user chooses.
 	var userGuess = "";
 
+	//possible values the user can choose on the keyboard.
 	var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i" , "j" , "k" ,  "l" , "m" , "n" , "o" , "p" , "q" , "r" , "s" , "t" , "u", "v", "w", "x", "y", "z"];
 
 	var isLetter = true;
 
-//Functions (Reusable blocks of code that I will call upo when needed)
+	var wrongGuess = "";
+
+//Functions (Reusable blocks of code that I will call uponn when needed)
 //===================================================================
 function start () {
+	//Randomly generate word from options array.
 	var randomWord = options[Math.floor(Math.random() * options.length)];
 	console.log(randomWord);
 	
 	//JavaScript String split() Method: https://www.w3schools.com/jsref/jsref_split.asp
 	//The split() method is used to split a string into an array of substrings, and returns the new array.
+	//Split the letters of current word and put in new array called lettersInWord.
 	lettersInWord = randomWord.split("");
 	console.log(lettersInWord);
 
+	//Determine number of underscores needed based on length of lettersInWord array.
 	numberUnderscoresNeeded = lettersInWord.length;
 	console.log(numberUnderscoresNeeded);
 
@@ -88,43 +95,75 @@ function checkLetters(userGuess) {
 		if (event.keyCode >= 48 && event.keyCode <= 57) {
 		    // Number
 		    //alert("not a letter");
-		} 
-
-		//If user pressed a letter...
-		else if (event.keyCode >= 65 && event.keyCode <= 122) {
-		    // Alphabet letter
-		    alert("letter");
-		    alert(userGuess);
 		}
 
-		else {
-			alert("not a letter");
+		    //If user pressed a letter...
+				else if (event.keyCode >= 65 && event.keyCode <= 122) {
+		    	// Alphabet letter
+		    	alert("letter");
+		    	alert(userGuess);
+		    	}
+
+		    	else {
+				alert("not a letter");
+				}
+
+
+		for(i = 0; i < numberUnderscoresNeeded; i++){
+			//letter was found in word.
+		    	if (userGuess == lettersInWord[i]) {
+		        alert("letter found");
+		        isletterInWord = true;
+				underscoresSuccesses[i] = userGuess;
+				console.log(lettersInWord[i]);
+				}
 		}
+
+	     for (i=0; i < numberUnderscoresNeeded; i++) {
+	     		//letter was not found in word.
+	     		if (randomWord.indexOf(userGuess) === -1) {
+		        	alert("letter not found");
+					//isletterInWord = false;
+					lettersNotInWord.push (userGuess);
+					guessesRemainder--;
+					//document.getElementById("LettersGuessed").innerHTML = lettersNotInWord.join(" ");
+					//document.getElementById("guessesLeft").innerHTML = guessesRemainder;
+		        	//var e = document.getElementById("lettersGuessed");
+		            //e.innerHTML = "Your wrong guesses are:" + lettersNotInWord;
+	        	}
+	     }  	      
 	}
 }
 
-	var isletterInWord = false;
-	}	
+  
 
-	for (var i=0; i < numberUnderscoresNeeded ; i++ ){
-		if (lettersInWord[i] = userGuess) {
+
+		
+		/*for (var i=0; i < numberUnderscoresNeeded ; i++ ){
+			//letter was found.
+			if (lettersInWord[i] > -1) {
 			alert("letter found");
 			isletterInWord = true;
-			underscoresSuccesses[i] = userGuess; { break; }
+			underscoresSuccesses[i] = userGuess;
 			console.log(lettersInWord[i]);
+			}
+
+			//letter wasn't found.
+			else if (lettersInWord[i] == -1) {
+				isletterinWord = false;
+				lettersNotInWord.push(userGuess);
+				guessesRemainder--;
+				document.getElementById("LettersGuessed").innerHTML = lettersNotInWord.join(" ");
+				document.getElementById("guessesLeft").innerHTML = guessesRemainder;
+			}
 		}
 	}
-}
+
+
+
 		
 /*
-			//letter wasn't in found.
-		if (lettersInWord[i] !== userGuess) {
-			isletterinWord = false;
-			lettersNotInWord.push(userGuess);
-			guessesRemainder--;
-			document.getElementById("LettersGuessed").innerHTML = lettersNotInWord.join(" ");
-			document.getElementById("guessesLeft").innerHTML = guessesRemainder;
-		}
+	
 
 		//Check where in the word the letter exists, then populate underscores and success array
 		if (isletterInWord) {
@@ -134,14 +173,6 @@ function checkLetters(userGuess) {
 			}
 		}
 	}
-
-}*/
-
-	//letter wasn't in found.
-	//else {
-		//lettersNotInWord.push(userGuess);
-		//guessesRemainder--;
-	//}
 
 	//console.log(underscoresSuccesses);
 
