@@ -79,11 +79,12 @@ function start () {
 	document.getElementById("losses").innerHTML = losses;
 	console.log(losses);
 
+	//When key is pressed...
 	document.onkeyup = function(event) {
-
-			//Determines wich key was pressed.
+	
 			//Need to determine whether the user pressed a letter, number, or anything else.
 			//https://stackoverflow.com/questions/34687895/determine-if-a-letter-or-a-number-was-pressed-javascript
+			//userGuess is our keyCode. Let's store the userGuess variable as a string. Also, if user has caps lock on, let's convert the letter from upper case to lower case.
 			var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
 			//If user pressed anything on the keyboard but a letter...
@@ -91,7 +92,7 @@ function start () {
 				alert("Not a letter. Please select a letter (a-z) to continue.");
 			}
 
-			//If user pressed a letter, game starts. Go to checkLetters function...
+			//If user pressed a letter, game starts. This letter is the user's first guess. Go to checkLetters function...
 			else  {
 			// Alphabet letter
 			alert("letter");
@@ -105,12 +106,12 @@ function start () {
 
 function checkLetters(userGuess) {
 	//I want to check if the letter the user guesses exists in the word.
-	//Need to find out if letter was already guessed by the user. If true, notify the user to select another letter.
+	//Need to find out if letter was already guessed by the user. If already guessed by the user, notify the user to select another letter.
 	if (lettersNotInWordList.indexOf(userGuess) > -1) {
 		alert("You already guessed that letter. Pick another letter.")
 		}
 
-	//If user did not already pick letter, push letter to the lettersNotInWordList array.
+	//If user did not already pick letter from a previous guess, push letter to the lettersNotInWordList array.
 	else {
 		lettersNotInWordList.push (userGuess);
 		//Test push method
@@ -118,7 +119,7 @@ function checkLetters(userGuess) {
 
 		//Write "Letters you already guessed" to div in html with id = lettersGuessed-Header.
 		$("#lettersGuessed-Header").html("<p>Letters you already guessed</p>");
-		//Write guessed letter to dic in html with id = lettersGuessed.
+		//Write guessed letter to div in html with id = lettersGuessed.
 		$("#lettersGuessed").html(lettersNotInWordList);
 	}
 
@@ -132,15 +133,15 @@ function checkLetters(userGuess) {
 		}
 
 		//Else, if letter that the user guessed was not found in the random word...
-		//Note, we have already added the guessed word to the lettersNotInWordList.
+		//Note that we have already added the guessed word to the lettersNotInWordList.
 		//if (randomWord.indexOf(userGuess) === -1 && alphabet.indexOf(userGuess) > -1 && userGuess != lettersInWord[i]) {
-		////else if (lettersNotInWordList.indexOf(userGuess) === -1) {
+		//else if (lettersNotInWordList.indexOf(userGuess) === -1) {
 		else {
-			//Subtract 1 guess from remaining guesses.
+			//If guessed letter was not found in random word and does not fall into the "Letters you already guessed" category, subtract 1 guess from remaining guesses.
 			guessesRemainder--;
 			console.log(guessesRemainder);
 
-			//Update number of guesses remaining in div in html with id = guessesLeft-Header.
+			//Update the number of guesses remaining in div in html with id = guessesLeft-Header.
 			$("#guessesLeft-Header").html("<p>Number of guesses remaining</p>");
 			//Write number of guesses to div in html with id = guessesLeft.
 			$("#guessesLeft").html(guessesRemainder); { break; }
