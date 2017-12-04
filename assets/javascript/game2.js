@@ -18,6 +18,7 @@
 
 	//Array/list of letters not in a word.
 	var lettersNotInWord = [""]; 
+	var lettersNotInWordList = [ ];
 
 	//wins, losses, guesses remaining
 	var wins = 0;
@@ -78,65 +79,86 @@ function start () {
 	document.getElementById("losses").innerHTML = losses;
 	console.log(losses);
 
+	document.onkeyup = function(event) {
+
+			//Determines wich key was pressed.
+			//Need to determine whether the user pressed a letter, number, or anything else.
+			//https://stackoverflow.com/questions/34687895/determine-if-a-letter-or-a-number-was-pressed-javascript
+			var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+			//If user pressed anything on the keyboard but a letter...
+			if (alphabet.indexOf(userGuess) === -1) {
+				alert("Not a letter. Please select a letter (a-z) to continue.");
+			}
+
+			//If user pressed a letter, game starts. Go to checkLetters...
+			else  {
+			// Alphabet letter
+			alert("letter");
+			alert(userGuess);
+			checkLetters(userGuess);
+			}
+	}
+
+
 }
 
 function checkLetters(userGuess) {
 	//I want to check if the letter the user guesses exists in the word.
-	document.onkeyup = function(event) {
-
-	//Determins wich key was pressed.
-	//Need to determine whether the user pressed a letter, number, or anything else.
-	//https://stackoverflow.com/questions/34687895/determine-if-a-letter-or-a-number-was-pressed-javascript
-		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-		//If user pressed a number...
-		if (event.keyCode >= 48 && event.keyCode <= 57) {
-		    // Number
-		    //alert("not a letter");
+	//Need to find out if letter was already guessed by the user. If true, notify the user to select another letter.
+	if (lettersNotInWordList.indexOf(userGuess) > -1) {
+		alert("You already guessed that letter. Pick another letter.")
 		}
 
-		    //If user pressed a letter...
-				else if (event.keyCode >= 65 && event.keyCode <= 122) {
-		    	// Alphabet letter
-		    	alert("letter");
-		    	alert(userGuess);
-		    	}
+	//If user did not already pick letter, push letter to the lettersNotInWordList array.
+	else {
+		lettersNotInWordList.push (userGuess);
+		//Test push method
+		console.log (lettersNotInWordList);
 
-		    	else {
-				alert("not a letter");
-				}
-
-
-		for(i = 0; i < numberUnderscoresNeeded; i++){
-			//letter was found in word.
-		    	if (userGuess == lettersInWord[i]) {
-		        alert("letter found");
-		        isletterInWord = true;
-				underscoresSuccesses[i] = userGuess;
-				console.log(lettersInWord[i]);
-				}
-		}
-
-	     		//letter was not found in word.
-	     		if (randomWord.indexOf(userGuess) === -1) {
-		        	alert("letter not found");
-
-						var lettersNotInWordList = [];
-						lettersNotInWordList.push (userGuess);
-						//Test push method
-						console.log (lettersNotInWordList);
-						guessesRemainder--;
-						console.log(guessesRemainder);
-						$("#lettersGuessed").append("<span>" + lettersNotInWordList +  " </span>");
-						document.getElementById("guessesLeft").innerHTML = guessesRemainder;
-				}
-	     }  	      
+		//Write "Letters you already guessed" to div in html with id = lettersGuessed-Header.
+		$("#lettersGuessed-Header").html("<p>Letters you already guessed</p>");
+		//Write guessed letter to dic in html with id = lettersGuessed.
+		$("#lettersGuessed").html(lettersNotInWordList);
 	}
 
-  
+	//Need to figure out if the guessed letter is in the random word that was generated...
+	for(i = 0; i < numberUnderscoresNeeded; i++){
+		//If letter that the user guessed was found in the random word....
+    	if (userGuess === lettersInWord[i]) {
+        alert("letter found");
+		underscoresSuccesses[i] = userGuess;
+		console.log(lettersInWord[i]);
+		}
+
+		//Else, if letter that the user guessed was not found in the random word...
+		//Note, we have already added the guessed word to the lettersNotInWordList.
+		else {
+
+		}
+	}
+}
+
+	
+
+	     		//If letter that the user guessed was not found in the random word....
+	     		//if (randomWord.indexOf(userGuess) === -1 && alphabet.indexOf(userGuess) > -1 && userGuess != lettersInWord[i]) {
+		        	//alert("letter not found");
+		        	//var lettersNotInWordList = [];
 
 
-		
+
+
+						//else if (lettersNotInWordList.indexOf(userGuess) === -1) {
+							//var lettersNotInWordList = [];
+					
+							//guessesRemainder--;
+							//console.log(guessesRemainder);
+						//}
+
+				
+
+
 		//for (var i=0; i < numberUnderscoresNeeded ; i++ ){
 			//letter was found.
 			// if (lettersInWord[i] > -1) {
@@ -174,7 +196,7 @@ function checkLetters(userGuess) {
 
 
 
-
+/*
 function roundComplete() {
 	console.log("Win Count: " + wins + " | loss Count: "+ losses + " | Guesses Left: " + guessesRemainder);
 
@@ -208,7 +230,7 @@ function roundComplete() {
 		//Restart the game after losing.
 		start();
 	}
-}
+}*/
 
 //Process - Execute the code. Do not place anything else below this line.
 //===================================================================
