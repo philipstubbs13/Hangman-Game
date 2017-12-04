@@ -91,7 +91,7 @@ function start () {
 				alert("Not a letter. Please select a letter (a-z) to continue.");
 			}
 
-			//If user pressed a letter, game starts. Go to checkLetters...
+			//If user pressed a letter, game starts. Go to checkLetters function...
 			else  {
 			// Alphabet letter
 			alert("letter");
@@ -133,28 +133,20 @@ function checkLetters(userGuess) {
 
 		//Else, if letter that the user guessed was not found in the random word...
 		//Note, we have already added the guessed word to the lettersNotInWordList.
+		//if (randomWord.indexOf(userGuess) === -1 && alphabet.indexOf(userGuess) > -1 && userGuess != lettersInWord[i]) {
+		////else if (lettersNotInWordList.indexOf(userGuess) === -1) {
 		else {
+			//Subtract 1 guess from remaining guesses.
+			guessesRemainder--;
+			console.log(guessesRemainder);
 
-		}
+			//Update number of guesses remaining in div in html with id = guessesLeft-Header.
+			$("#guessesLeft-Header").html("<p>Number of guesses remaining</p>");
+			//Write number of guesses to div in html with id = guessesLeft.
+			$("#guessesLeft").html(guessesRemainder); { break; }
+			}
 	}
 }
-
-	
-
-	     		//If letter that the user guessed was not found in the random word....
-	     		//if (randomWord.indexOf(userGuess) === -1 && alphabet.indexOf(userGuess) > -1 && userGuess != lettersInWord[i]) {
-		        	//alert("letter not found");
-		        	//var lettersNotInWordList = [];
-
-
-
-
-						//else if (lettersNotInWordList.indexOf(userGuess) === -1) {
-							//var lettersNotInWordList = [];
-					
-							//guessesRemainder--;
-							//console.log(guessesRemainder);
-						//}
 
 				
 
