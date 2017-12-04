@@ -30,8 +30,6 @@
 	//possible values the user can choose on the keyboard.
 	var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i" , "j" , "k" ,  "l" , "m" , "n" , "o" , "p" , "q" , "r" , "s" , "t" , "u", "v", "w", "x", "y", "z"];
 
-	var isLetter = true;
-
 	var wrongGuess = "";
 
 //Functions (Reusable blocks of code that I will call uponn when needed)
@@ -119,60 +117,58 @@ function checkLetters(userGuess) {
 				}
 		}
 
-	     for (i=0; i < numberUnderscoresNeeded; i++) {
 	     		//letter was not found in word.
 	     		if (randomWord.indexOf(userGuess) === -1) {
 		        	alert("letter not found");
-					//isletterInWord = false;
-					lettersNotInWord.push (userGuess);
-					guessesRemainder--;
-					//document.getElementById("LettersGuessed").innerHTML = lettersNotInWord.join(" ");
-					//document.getElementById("guessesLeft").innerHTML = guessesRemainder;
-		        	//var e = document.getElementById("lettersGuessed");
-		            //e.innerHTML = "Your wrong guesses are:" + lettersNotInWord;
-	        	}
+
+						var lettersNotInWordList = [];
+						lettersNotInWordList.push (userGuess);
+						//Test push method
+						console.log (lettersNotInWordList);
+						guessesRemainder--;
+						console.log(guessesRemainder);
+						$("#lettersGuessed").append("<span>" + lettersNotInWordList +  " </span>");
+						document.getElementById("guessesLeft").innerHTML = guessesRemainder;
+				}
 	     }  	      
 	}
-}
 
   
 
 
 		
-		/*for (var i=0; i < numberUnderscoresNeeded ; i++ ){
+		//for (var i=0; i < numberUnderscoresNeeded ; i++ ){
 			//letter was found.
-			if (lettersInWord[i] > -1) {
-			alert("letter found");
-			isletterInWord = true;
-			underscoresSuccesses[i] = userGuess;
-			console.log(lettersInWord[i]);
-			}
+			// if (lettersInWord[i] > -1) {
+			//alert("letter found");
+			//isletterInWord = true;
+			//underscoresSuccesses[i] = userGuess;
+			//console.log(lettersInWord[i]);
+			//}
 
 			//letter wasn't found.
-			else if (lettersInWord[i] == -1) {
-				isletterinWord = false;
-				lettersNotInWord.push(userGuess);
-				guessesRemainder--;
-				document.getElementById("LettersGuessed").innerHTML = lettersNotInWord.join(" ");
-				document.getElementById("guessesLeft").innerHTML = guessesRemainder;
-			}
-		}
-	}
+			//else if (lettersInWord[i] == -1) {
+			//	isletterinWord = false;
+			//	lettersNotInWord.push(userGuess);
+			//	guessesRemainder--;
+			//	document.getElementById("LettersGuessed").innerHTML = lettersNotInWord.join(" ");
+			//	document.getElementById("guessesLeft").innerHTML = guessesRemainder;
+			//}
+		//}
+//	}
 
 
 
 		
-/*
-	
 
 		//Check where in the word the letter exists, then populate underscores and success array
-		if (isletterInWord) {
-		 for (var i = 0; i < numberUnderscoresNeeded; i++) {
-			if (lettersWord[i] == userGuess) {
-				underscoresSuccesses[i] = userGuess;
-			}
-		}
-	}
+		//if (isletterInWord) {
+		 //for (var i = 0; i < numberUnderscoresNeeded; i++) {
+			//if (lettersWord[i] == userGuess) {
+			//	underscoresSuccesses[i] = userGuess;
+			//}
+		//}
+	//}
 
 	//console.log(underscoresSuccesses);
 
