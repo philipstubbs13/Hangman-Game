@@ -2,24 +2,25 @@
 //==================================================================
 //Arrays and Variables
 	//Pre-defined list of words to choose from
-	var options = ["warriors" , "celtics" , "suns" , "cavaliers" , "clippers" , "spurs" , "timberwolves"];
+	var options = ["warriors" , "celtics" , "suns" , "cavaliers" , "clippers" , "spurs" , "timberwolves" , "heat" , "raptors" , "grizzlies" , "trailblazers"];
 
 	//Computer chooses random word from list
 	var randomWord = "";
 
-	//Array/list of letters in a word
+	//Creating an empty array that will hold all the letters in the random word that the computer generates.
 	var lettersInWord = [];
 
-	//Number of underscores
+	//Number of underscores needed for random word.
 	var numberUnderscoresNeeded = 0;
 
+	//Creating an empty array, which will be used to replace the underscores with successful guesses by the user.
 	var underscoresSuccesses = [];
 
-	//Array/list of letters not in a word.
+	//Creating an empty array to hold all the letters not in a word or that were already guessed.
 	var lettersNotInWord = [""]; 
 	var lettersNotInWordList = [ ];
 
-	//wins, losses, guesses remaining
+	//Counters for wins, losses, and guesses remaining.
 	var wins = 0;
 	var losses = 0;
 	var guessesRemainder = 8;
@@ -27,12 +28,10 @@
 	//User's guess - the letter the user chooses.
 	var userGuess = "";
 
-	//possible values the user can choose on the keyboard.
+	//Possible values the user can choose on the keyboard.
 	var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i" , "j" , "k" ,  "l" , "m" , "n" , "o" , "p" , "q" , "r" , "s" , "t" , "u", "v", "w", "x", "y", "z"];
 
-	var wrongGuess = "";
-
-//Functions (Reusable blocks of code that I will call uponn when needed)
+//Functions - the reusable blocks of code that I will call upon when needed.
 //===================================================================
 function start () {
 	//Randomly generate word from options array.
@@ -86,21 +85,15 @@ function start () {
 			//userGuess is our keyCode. Let's store the userGuess variable as a string. Also, if user has caps lock on, let's convert the letter from upper case to lower case.
 			var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-			//If user pressed anything on the keyboard but a letter...
-			if (alphabet.indexOf(userGuess) === -1) {
-				alert("Not a letter. Please select a letter (a-z) to continue.");
-			}
-
-			//If user pressed a letter, game starts. This letter is the user's first guess. Go to checkLetters function...
-			else  {
-			// Alphabet letter
-			alert("letter");
-			alert(userGuess);
-			checkLetters(userGuess);
+			//If user pressed a letter, game starts (check letter against the letters in the randowm word).
+			//This letter is the user's first guess. Go to checkLetters function... 
+			// If anything is pressed on the keyboard but a letter, nothing happens.
+			if (alphabet.indexOf(userGuess) >= 0) {
+				alert("letter");
+				alert(userGuess);
+				checkLetters(userGuess);
 			}
 	}
-
-
 }
 
 function checkLetters(userGuess) {
