@@ -13,7 +13,6 @@
 	//Number of underscores
 	var numberUnderscoresNeeded = 0;
 
-
 	var underscoresSuccesses = [];
 
 	//Array/list of letters not in a word.
@@ -142,6 +141,7 @@ function checkLetters(userGuess) {
 		//else if (lettersNotInWordList.indexOf(userGuess) === -1) {
 		else if (lettersInWord[i] == -1){
 			isletterinWord = false;
+			//	lettersNotInWord.push(userGuess);
 			//If guessed letter was not found in random word and does not fall into the "Letters you already guessed" category, subtract 1 guess from remaining guesses.
 			guessesRemainder--;
 			console.log(guessesRemainder);
@@ -149,10 +149,14 @@ function checkLetters(userGuess) {
 			//Update the number of guesses remaining in div in html with id = guessesLeft-Header.
 			$("#guessesLeft-Header").html("<p>Number of guesses remaining</p>");
 			//Write number of guesses to div in html with id = guessesLeft.
-			$("#guessesLeft").html(guessesRemainder); { break; }
+			$("#guessesLeft").html(guessesRemainder);
+			//document.getElementById("LettersGuessed").innerHTML = lettersNotInWord.join(" ");
+			//document.getElementById("guessesLeft").innerHTML = guessesRemainder;
+
 			}
 	}
-	//Check where in the word the letter exists, then populate underscores and success array
+
+	//If the letter is in the word, let's check where in the word the letter exists, and then populate the underscoresSuccesses array in our HTML.
 	if (isletterInWord) {
 		 for (var i = 0; i < numberUnderscoresNeeded; i++) {
 			if (lettersInWord[i] == userGuess) {
@@ -163,83 +167,55 @@ function checkLetters(userGuess) {
 		}
 	}
 
+	//If the letters in the lettersInWord array are the same as the letters in the underscoreSuccesses array, round is complete.
+	//Then, execute roundComplete() function.
+	if (lettersInWord.toString() == underscoresSuccesses.toString()) {
+		roundComplete();
+	}
+
+	else if (guessesRemainder == 0) {
+		roundComplete();
+	}
+	
 }
 
-				
-
-
-		//for (var i=0; i < numberUnderscoresNeeded ; i++ ){
-			//letter was found.
-			// if (lettersInWord[i] > -1) {
-			//alert("letter found");
-			//isletterInWord = true;
-			//underscoresSuccesses[i] = userGuess;
-			//console.log(lettersInWord[i]);
-			//}
-
-			//letter wasn't found.
-			//else if (lettersInWord[i] == -1) {
-			//	isletterinWord = false;
-			//	lettersNotInWord.push(userGuess);
-			//	guessesRemainder--;
-			//	document.getElementById("LettersGuessed").innerHTML = lettersNotInWord.join(" ");
-			//	document.getElementById("guessesLeft").innerHTML = guessesRemainder;
-			//}
-		//}
-//	}
-
-
-
-		
-
-		//Check where in the word the letter exists, then populate underscores and success array
-		//if (isletterInWord) {
-		 //for (var i = 0; i < numberUnderscoresNeeded; i++) {
-			//if (lettersWord[i] == userGuess) {
-			//	underscoresSuccesses[i] = userGuess;
-			//}
-		//}
-	//}
-
-	//console.log(underscoresSuccesses);
-
-
-
-/*
 function roundComplete() {
+	//log the wins, losses, and remaining guesses counts to the console.
 	console.log("Win Count: " + wins + " | loss Count: "+ losses + " | Guesses Left: " + guessesRemainder);
 
 	//I need to update the HTML with guesses remaining, underscores and successes, and letters already guessed.
-	document.getElementById("guessesLeft").innerHTML = guessesRemainder;
-	document.getElementById("underscore").innerHTML = underscoresSuccesses.join("");
+	//document.getElementById("guessesLeft").innerHTML = guessesRemainder;
+	//document.getElementById("underscore").innerHTML = underscoresSuccesses.join("");
 	//document.getElementById("lettersGuessed").innerHTML = lettersNotInWord.join("");
-	document.getElementById("lettersGuessed").innerHTML = lettersNotInWord.join;
-	console.log(lettersNotInWord.join);
+	//document.getElementById("lettersGuessed").innerHTML = lettersNotInWord.join;
+	//console.log(lettersNotInWord.join);
 
-	//I want to check if the user won. If the user won, lettersWord (for example, "c","e","l","t","i","c","s" equals underscores and successes.
+	//I want to check if the user won. If the user won, the letters in the lettersInWord array are the same as the letters in the underscoreSuccessarray.
+	//Convert the letters in both arrays to compare.
 	if (lettersInWord.toString() == underscoresSuccesses.toString()) {
 		wins++;
 		alert("You won");
 
 
-		//Add 1 to the number of wins in the HTML.
+		//Add to the number of wins in the HTML.
 		document.getElementById("wins").innerHTML = wins;
 
 		//Restart the game after winning.
 		start();
 	}
+
 	//Check if user lost
-	else if (guessesRemainder){
+	else if (guessesRemainder === 0){
 		losses++;
 		alert("You lost");
 
-		//Add 1 to the number of losses in the HTML.
+		//Add to the number of losses in the HTML.
 		document.getElementById("losses").innerHTML = losses;
 
 		//Restart the game after losing.
 		start();
 	}
-}*/
+}
 
 //Process - Execute the code. Do not place anything else below this line.
 //===================================================================
@@ -247,8 +223,11 @@ function roundComplete() {
 //Starts/resets the code/game
 start();
 
-//When the user presses a key...
-
+//check/compare the letter that the user guessed to the letters in the word.
+//If the letter is in the word, populate the letter in the HTML.
 checkLetters (userGuess);
 
-	//roundComplete();
+//Determine if user won or loss. 
+//Update wins or losses counter.
+//Reset game.
+roundComplete();
