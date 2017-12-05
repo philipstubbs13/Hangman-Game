@@ -127,17 +127,21 @@ function checkLetters(userGuess) {
 	for (var i = 0; i < numberUnderscoresNeeded; i++){
 		//If letter that the user guessed was found in the random word....
     	if (userGuess === lettersInWord[i]) {
+    	//if (lettersInWord[i] > -1) {
         alert("letter found");
+        var isletterInWord = true;
 		underscoresSuccesses[i] = userGuess;
 		console.log(underscoresSuccesses[i]);
-		document.getElementById("underscore").innerHTML = underscoresSuccesses.join("");
+		console.log(lettersInWord[i]);
+		//document.getElementById("underscore").innerHTML = underscoresSuccesses.join("");
 		}
 
 		//Else, if letter that the user guessed was not found in the random word...
 		//Note that we have already added the guessed word to the lettersNotInWordList.
 		//if (randomWord.indexOf(userGuess) === -1 && alphabet.indexOf(userGuess) > -1 && userGuess != lettersInWord[i]) {
 		//else if (lettersNotInWordList.indexOf(userGuess) === -1) {
-		else {
+		else if (lettersInWord[i] == -1){
+			isletterinWord = false;
 			//If guessed letter was not found in random word and does not fall into the "Letters you already guessed" category, subtract 1 guess from remaining guesses.
 			guessesRemainder--;
 			console.log(guessesRemainder);
@@ -148,6 +152,17 @@ function checkLetters(userGuess) {
 			$("#guessesLeft").html(guessesRemainder); { break; }
 			}
 	}
+	//Check where in the word the letter exists, then populate underscores and success array
+	if (isletterInWord) {
+		 for (var i = 0; i < numberUnderscoresNeeded; i++) {
+			if (lettersInWord[i] == userGuess) {
+				underscoresSuccesses[i] = userGuess;
+				console.log(underscoresSuccesses);
+				document.getElementById("underscore").innerHTML = underscoresSuccesses.join("");
+			}
+		}
+	}
+
 }
 
 				
