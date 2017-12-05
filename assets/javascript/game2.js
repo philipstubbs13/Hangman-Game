@@ -2,7 +2,7 @@
 //==================================================================
 //Arrays and Variables
 	//Pre-defined list of words to choose from
-	var options = ["warriors" , "celtics" , "suns"];
+	var options = ["warriors" , "celtics" , "suns" , "cavaliers" , "clippers" , "spurs" , "timberwolves"];
 
 	//Computer chooses random word from list
 	var randomWord = "";
@@ -124,12 +124,13 @@ function checkLetters(userGuess) {
 	}
 
 	//Need to figure out if the guessed letter is in the random word that was generated...
-	for(i = 0; i < numberUnderscoresNeeded; i++){
+	for (var i = 0; i < numberUnderscoresNeeded; i++){
 		//If letter that the user guessed was found in the random word....
     	if (userGuess === lettersInWord[i]) {
         alert("letter found");
 		underscoresSuccesses[i] = userGuess;
-		console.log(lettersInWord[i]);
+		console.log(underscoresSuccesses[i]);
+		document.getElementById("underscore").innerHTML = underscoresSuccesses.join("");
 		}
 
 		//Else, if letter that the user guessed was not found in the random word...
