@@ -10,9 +10,6 @@
 	<!--JQuery-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<style>
-		body {
-			background-image: url('assets/images/basketball.jpg');	
-		}
 	</style>
 	<script src="https://use.fontawesome.com/abd289e58f.js"></script>
 
@@ -25,36 +22,45 @@
 		  <p>This is a spinoff on the classic hangman game. In this game, you'll need to guess different letters to figure out the name of the NBA team.</p>
 		</div>
 
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card mb-4">
+				  <div class="card-header">
+				    How to Play
+				  </div>
+				  <div class="card-body">
+				    <ol>
+				    	<li>Click Start.</li>
+				    	<li>Press any letter (a-z) on the keyboard to guess a letter.</li>
 
-		<div class="card mb-4">
-		  <div class="card-header">
-		    How to Play
-		  </div>
-		  <div class="card-body">
-		    <ol>
-		    	<li>Click Start.</li>
-		    	<li>Press any letter (a-z) on the keyboard to guess a letter.</li>
-
-		    	<li>Keep guessing letters. When you guess a letter, your choice is either correct or incorrect. The letter is added to the "Letters you already guessed" section.</li>
-		    		<ul>
-		    			<li>If correct, the letter you guessed appears in the word.
-		    			<li>
-		    				<info>If incorrect, the letter you guessed does not appeared the word. For every incorrect guess, the number of guesses remaining decreases by 1.</info>
-		    		</ul>
-		    	<li>If you correctly guess all the letters in the word before the number of guesses remaining reaches 0, you win. </li>
-		    		<info>You have 13 guesses to guess the word correctly. If you run out of guesses before the entire word is revealed, you lose. Game over.</info>
-
-		  </div>
+				    	<li>Keep guessing letters. When you guess a letter, your choice is either correct or incorrect. The letter is added to the "Letters you already guessed" section.</li>
+				    		<ul>
+				    			<li>If correct, the letter you guessed appears in the word.
+				    			<li>
+				    				<info>If incorrect, the letter you guessed does not appeared the word. For every incorrect guess, the number of guesses remaining decreases by 1.</info>
+				    		</ul>
+				    	<li>If you correctly guess all the letters in the word before the number of guesses remaining reaches 0, you win. </li>
+				    		<info>You have 13 guesses to guess the word correctly. If you run out of guesses before the entire word is revealed, you lose. Game over.</info>
+				    </ol>
+				  </div>
+				</div>
+			</div>
+			
+			<div class="col-md-6">		
+				<div class="card mb-4">
+				  <div class="card-header">
+				    Click Start to begin...
+				  </div>
+				  <div class="card-body">
+				    <a href="index.html"><button type="button" class="btn btn-secondary btn-lg">Start</button></a>
+				  </div>
+				 </div>
+				 <div>
+				 	<img src="assets/images/hangman.png" alt="hangman"></img>
+				</div>
+			</div>
 		</div>
-
-		<div class="card mb-4">
-		  <div class="card-header">
-		    Click Start to begin...
-		  </div>
-		  <div class="card-body">
-		    <a href="index.html"><button type="button" class="btn btn-secondary btn-lg">Start</button></a>
-		  </div>
-		</div>
+	</div>
 
 </body>
 </html>

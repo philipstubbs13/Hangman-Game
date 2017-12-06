@@ -115,6 +115,7 @@ function checkLetters(userGuess) {
 		$("#lettersGuessed-Header").html("<p>Letters you already guessed</p>");
 		//Write guessed letter to div in html with id = lettersGuessed.
 		$("#lettersGuessed").html(lettersNotInWordList);
+
 	}
 
 	//Need to figure out if the guessed letter is in the random word that was generated...
@@ -158,9 +159,6 @@ function checkLetters(userGuess) {
 		$("#guessesLeft-Header").html("<p>Number of guesses remaining</p>");
 		//Write number of guesses to div in html with id = guessesLeft.
 		$("#guessesLeft").html(guessesRemainder);
-		//document.getElementById("LettersGuessed").innerHTML = lettersNotInWord.join(" ");
-		//document.getElementById("guessesLeft").innerHTML = guessesRemainder;
-		//console.log(guessesRemainder);
 	}
 
 
@@ -181,11 +179,7 @@ function roundComplete() {
 	console.log("Win Count: " + wins + " | loss Count: "+ losses + " | Guesses Left: " + guessesRemainder);
 
 	//I need to update the HTML with guesses remaining, underscores and successes, and letters already guessed.
-	//document.getElementById("guessesLeft").innerHTML = guessesRemainder;
 	//document.getElementById("underscore").innerHTML = underscoresSuccesses.join("");
-	//document.getElementById("lettersGuessed").innerHTML = lettersNotInWord.join("");
-	//document.getElementById("lettersGuessed").innerHTML = lettersNotInWord.join;
-	//console.log(lettersNotInWord.join);
 
 	//I want to check if the user won. If the user won, the letters in the lettersInWord array are the same as the letters in the underscoreSuccessarray.
 	//Convert the letters in both arrays to compare.
