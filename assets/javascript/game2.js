@@ -2,7 +2,7 @@
 //==================================================================
 //Arrays and Variables
 	//Pre-defined list of words to choose from
-	var options = ["warriors" , "celtics" , "suns" , "cavaliers" , "clippers" , "spurs" , "timberwolves" , "heat" , "raptors" , "grizzlies" , "trailblazers"];
+	var options = ["warriors" , "celtics" , "suns" , "cavaliers" , "clippers" , "spurs" , "timberwolves" , "heat" , "raptors" , "grizzlies" , "trailblazers" , "lakers" , "wizards"];
 
 	//Computer chooses random word from list
 	var randomWord = "";
@@ -23,7 +23,7 @@
 	//Counters for wins, losses, and guesses remaining.
 	var wins = 0;
 	var losses = 0;
-	var guessesRemainder = 8;
+	var guessesRemainder = 13;
 
 	//User's guess - the letter the user chooses.
 	var userGuess = "";
@@ -49,9 +49,11 @@ function start () {
 	console.log(numberUnderscoresNeeded);
 
 	//Reset
-	guessesRemainder = 8;
+	guessesRemainder = 13;
 	lettersNotInWord = 0;
 	underscoresSuccesses = [];
+	lettersNotInWordList = [ ];
+	lettersNotInWord = [""];
 
 	//Problem: After the app generates a random word, we need a way to add the appropriate number of underscores("_") to the Current Word section
 	//based on the number of letters in the word.
@@ -134,18 +136,6 @@ function checkLetters(userGuess) {
 		//else if (lettersNotInWordList.indexOf(userGuess) === -1) {
 		else if (lettersInWord[i] == -1){
 			isletterinWord = false;
-			//	lettersNotInWord.push(userGuess);
-			//If guessed letter was not found in random word and does not fall into the "Letters you already guessed" category, subtract 1 guess from remaining guesses.
-			guessesRemainder--;
-			console.log(guessesRemainder);
-
-			//Update the number of guesses remaining in div in html with id = guessesLeft-Header.
-			$("#guessesLeft-Header").html("<p>Number of guesses remaining</p>");
-			//Write number of guesses to div in html with id = guessesLeft.
-			$("#guessesLeft").html(guessesRemainder);
-			//document.getElementById("LettersGuessed").innerHTML = lettersNotInWord.join(" ");
-			//document.getElementById("guessesLeft").innerHTML = guessesRemainder;
-
 			}
 	}
 
@@ -160,6 +150,20 @@ function checkLetters(userGuess) {
 		}
 	}
 
+	else {
+		//If guessed letter was not found in random word and does not fall into the "Letters you already guessed" category, subtract 1 guess from remaining guesses.
+		guessesRemainder--;
+		console.log(guessesRemainder);
+		//Update the number of guesses remaining in div in html with id = guessesLeft-Header.
+		$("#guessesLeft-Header").html("<p>Number of guesses remaining</p>");
+		//Write number of guesses to div in html with id = guessesLeft.
+		$("#guessesLeft").html(guessesRemainder);
+		//document.getElementById("LettersGuessed").innerHTML = lettersNotInWord.join(" ");
+		//document.getElementById("guessesLeft").innerHTML = guessesRemainder;
+		//console.log(guessesRemainder);
+	}
+
+
 	//If the letters in the lettersInWord array are the same as the letters in the underscoreSuccesses array, round is complete.
 	//Then, execute roundComplete() function.
 	if (lettersInWord.toString() == underscoresSuccesses.toString()) {
@@ -169,8 +173,8 @@ function checkLetters(userGuess) {
 	else if (guessesRemainder == 0) {
 		roundComplete();
 	}
-	
-}
+}	
+
 
 function roundComplete() {
 	//log the wins, losses, and remaining guesses counts to the console.
@@ -193,8 +197,16 @@ function roundComplete() {
 		//Add to the number of wins in the HTML.
 		document.getElementById("wins").innerHTML = wins;
 
-		//Restart the game after winning.
-		start();
+		//Ask the user if they want to play the game. If user clicks OK, reset game and choose new word.
+		//If user clicks Cancel, go back to main home screen.
+		var playAgain = confirm('Do you want to play again?');
+		if (playAgain) {
+			start();
+		}
+
+		else {
+			location.href = "home.html";
+		}
 	}
 
 	//Check if user lost
@@ -205,8 +217,12 @@ function roundComplete() {
 		//Add to the number of losses in the HTML.
 		document.getElementById("losses").innerHTML = losses;
 
-		//Restart the game after losing.
-		start();
+		//Ask the user if they want to play the game again. If user clicks OK, reset game and choose new word.
+		//If user clicks Cancel, go back to main home screen.
+		var playAgain = confirm('Do you want to play again?');
+		if (playAgain) {
+			start();
+		}
 	}
 }
 

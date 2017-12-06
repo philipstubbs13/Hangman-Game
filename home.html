@@ -15,10 +15,6 @@
 		}
 	</style>
 	<script src="https://use.fontawesome.com/abd289e58f.js"></script>
-	<!--<audio loop="true" autoplay="true">-->
-  		<source src="assets/audio/Jeopardy-theme-song.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-	</audio>
 
 </head>
 <body>
@@ -26,7 +22,7 @@
 				
 		<div class="jumbotron">
 		  <h1>Hangman</h1>
-		  <p>This is a simple hangman game. In this game, you'll need to guess different letters to figure out the name of the NBA team. You have 13 tries to guess correctly. Good luck!</p>
+		  <p>This is a simple hangman game. In this game, you'll need to guess different letters to figure out the name of the NBA team.</p>
 		</div>
 
 
@@ -36,6 +32,7 @@
 		  </div>
 		  <div class="card-body">
 		    <ol>
+		    	<li>Click Start.</li>
 		    	<li>Press any letter (a-z) on the keyboard to guess a letter.</li>
 
 		    	<li>Keep guessing letters. When you guess a letter, your choice is either correct or incorrect. The letter is added to the "Letters you already guessed" section.</li>
@@ -46,47 +43,18 @@
 		    		</ul>
 		    	<li>If you correctly guess all the letters in the word before the number of guesses remaining reaches 0, you win. </li>
 		    		<info>You have 13 guesses to guess the word correctly. If you run out of guesses before the entire word is revealed, you lose. Game over.</info>
+
 		  </div>
 		</div>
 
 		<div class="card mb-4">
 		  <div class="card-header">
-		    Current Word
+		    Click Start to begin...
 		  </div>
 		  <div class="card-body">
-		    <h2 id="underscore">_ _ _ _ _ _ _ _ _ _ </h2>
+		    <a href="index.html"><button type="button" class="btn btn-secondary btn-lg">Start</button></a>
 		  </div>
 		</div>
-
-		<div class="card mb-4">
-		  <div class="card-header" id="lettersGuessed-Header">
-		  </div>
-		  <div class="card-body" id="lettersGuessed">
-		  </div>
-		</div>
-
-		<div class="card mb-4">
-			<div class="card-header" id="guessesLeft-Header">
-			</div>
-		  	<div class="card-body" id="guessesLeft">
-		  	</div>
-		</div>
-
-		<div class="card mb-4">
-		  <div class="card-body">
-		  	Wins: <span id="wins">5</span>
-		  </div>
-		</div>
-
-		<div class="card mb-4">
-		  <div class="card-body">
-		  	Losses: <span id="losses">12</span>
-		  </div>
-		</div>
-	</div>
-
-	<!--External Javascript file-->
-	<script src="assets/javascript/game2.js"></script>
 
 </body>
 </html>
