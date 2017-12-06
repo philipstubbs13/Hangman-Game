@@ -23,7 +23,7 @@
 	//Counters for wins, losses, and guesses remaining.
 	var wins = 0;
 	var losses = 0;
-	var guessesRemainder = 13;
+	var guessesRemainder = 5;
 
 	//User's guess - the letter the user chooses.
 	var userGuess = "";
@@ -49,7 +49,7 @@ function start () {
 	console.log(numberUnderscoresNeeded);
 
 	//Reset
-	guessesRemainder = 13;
+	guessesRemainder = 5;
 	lettersNotInWord = 0;
 	underscoresSuccesses = [];
 	lettersNotInWordList = [ ];
@@ -72,11 +72,11 @@ function start () {
 	console.log(guessesRemainder);
 	
 	//When game is started/reset, change number of wins in the HTML file.
-	document.getElementById("wins").innerHTML = wins;
+	$(".win-counter").html(wins);
 	console.log(wins);
 
 	//When game is started/reset, Change number of losses in the HTML file.
-	document.getElementById("losses").innerHTML = losses;
+	$(".loss-counter").html(losses);
 	console.log(losses);
 
 	//When key is pressed...
@@ -191,11 +191,9 @@ function roundComplete() {
 	//Convert the letters in both arrays to compare.
 	if (lettersInWord.toString() == underscoresSuccesses.toString()) {
 		wins++;
-		alert("You won");
-
-
 		//Add to the number of wins in the HTML.
-		document.getElementById("wins").innerHTML = wins;
+		$(".win-counter").html(wins);
+		alert("You won");
 
 		//Ask the user if they want to play the game. If user clicks OK, reset game and choose new word.
 		//If user clicks Cancel, go back to main home screen.
@@ -212,10 +210,9 @@ function roundComplete() {
 	//Check if user lost
 	else if (guessesRemainder === 0){
 		losses++;
-		alert("You lost");
-
 		//Add to the number of losses in the HTML.
-		document.getElementById("losses").innerHTML = losses;
+		$(".loss-counter").html(losses);
+		alert("You lost");
 
 		//Ask the user if they want to play the game again. If user clicks OK, reset game and choose new word.
 		//If user clicks Cancel, go back to main home screen.
@@ -223,7 +220,12 @@ function roundComplete() {
 		if (playAgain) {
 			start();
 		}
+
+		else {
+			location.href = "home.html";
+		}
 	}
+	
 }
 
 //Process - Execute the code. Do not place anything else below this line.
