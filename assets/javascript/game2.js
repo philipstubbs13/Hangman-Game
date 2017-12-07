@@ -23,7 +23,7 @@
 	//Counters for wins, losses, and guesses remaining.
 	var wins = 0;
 	var losses = 0;
-	var guessesRemainder = 5;
+	var guessesRemainder = 14;
 
 	//User's guess - the letter the user chooses.
 	var userGuess = "";
@@ -49,7 +49,7 @@ function start () {
 	console.log(numberUnderscoresNeeded);
 
 	//Reset
-	guessesRemainder = 5;
+	guessesRemainder = 14;
 	lettersNotInWord = 0;
 	underscoresSuccesses = [];
 	lettersNotInWordList = [ ];
@@ -91,8 +91,8 @@ function start () {
 			//This letter is the user's first guess. Go to checkLetters function... 
 			// If anything is pressed on the keyboard but a letter, nothing happens.
 			if (alphabet.indexOf(userGuess) >= 0) {
-				alert("letter");
-				alert(userGuess);
+				console.log("letter");
+				console.log(userGuess);
 				checkLetters(userGuess);
 			}
 	}
@@ -108,7 +108,6 @@ function checkLetters(userGuess) {
 	//If user did not already pick letter from a previous guess, push letter to the lettersNotInWordList array.
 	else {
 		lettersNotInWordList.push (userGuess);
-		//Test push method
 		console.log (lettersNotInWordList);
 
 		//Write "Letters you already guessed" to div in html with id = lettersGuessed-Header.
@@ -122,7 +121,7 @@ function checkLetters(userGuess) {
 		//If letter that the user guessed was found in the random word....
     	if (userGuess === lettersInWord[i]) {
     	//if (lettersInWord[i] > -1) {
-        alert("letter found");
+        console.log("letter found");
         var isletterInWord = true;
 		underscoresSuccesses[i] = userGuess;
 		console.log(underscoresSuccesses[i]);
@@ -135,7 +134,7 @@ function checkLetters(userGuess) {
 		//if (randomWord.indexOf(userGuess) === -1 && alphabet.indexOf(userGuess) > -1 && userGuess != lettersInWord[i]) {
 		//else if (lettersNotInWordList.indexOf(userGuess) === -1) {
 		else if (lettersInWord[i] == -1){
-			isletterinWord = false;
+			isletterInWord = false;
 			}
 	}
 
@@ -203,7 +202,7 @@ function roundComplete() {
 		}
 
 		else {
-			location.href = "home.html";
+			location.href = "index.html";
 		}
 	}
 
