@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>Hangman Game</title>
+	<!--Reset Css file-->
+	<!--<link rel="stylesheet" type="text/css" href="assets/css/reset.css">-->
 	<!--Bootstrap CDN-->
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<!--Bootswatch-->
@@ -16,20 +18,27 @@
 </head>
 <body>
 	<div class="container">
-				
-		<div class="jumbotron">
-		  <h1>Hangman: The Game</h1>
-		  <p>This is a spinoff on the classic hangman game. In this game, you'll need to guess different letters to figure out the name of the NBA team.</p>
+
+		<div class="row pb-4">
+			<div class= "col-md-6">
+				<div class="jumbotron">
+				  <h1>Hangman</h1>
+				  <p>This is a spin off of the classic hangman game. In this game, you'll need to guess different letters to figure out the name of the NBA team.</p>
+				  <p>May the odds be ever in your favor.</p>
+				  <p>Wins: <span class="win-counter"></span></p>
+				  <p>Losses: <span class="loss-counter"></span></p>
+				</div>
+			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-6">
 				<div class="card mb-4">
 				  <div class="card-header">
-				    How to Play
+				    How to play
 				  </div>
 				  <div class="card-body">
-				    <ol>
+	    			<ol>
 				    	<li>Click Start.</li>
 				    	<li>Press any letter (a-z) on the keyboard to guess a letter.</li>
 
@@ -37,7 +46,7 @@
 				    		<ul>
 				    			<li>If correct, the letter you guessed appears in the word.
 				    			<li>
-				    				<info>If incorrect, the letter you guessed does not appear in the word. For every incorrect guess, the number of guesses remaining decreases by 1.</info>
+				    				<info>If incorrect, the letter you guessed does not appear the word. For every incorrect guess, the number of guesses remaining decreases by 1.</info>
 				    		</ul>
 				    	<li>If you correctly guess all the letters in the word before the number of guesses remaining reaches 0, you win. </li>
 				    		<info>If you run out of guesses before the entire word is revealed, you lose. Game over.</info>
@@ -45,22 +54,36 @@
 				  </div>
 				</div>
 			</div>
-			
-			<div class="col-md-6">		
+
+			<div class="col-md-6">
 				<div class="card mb-4">
 				  <div class="card-header">
-				    Click Start to begin...
+				    Current word
 				  </div>
 				  <div class="card-body">
-				    <a href="index.html"><button type="button" class="btn btn-secondary btn-lg">Start</button></a>
+				    <h2 id="underscore">_ _ _ _ _ _ _ _ _ _ </h2>
 				  </div>
-				 </div>
-				 <div>
-				 	<img src="assets/images/hangman.png" alt="hangman"></img>
+				</div>
+
+				<div class="card mb-4">
+				  <div class="card-header" id="lettersGuessed-Header">
+				  </div>
+				  <div class="card-body" id="lettersGuessed">
+				  </div>
+				</div>
+
+				<div class="card mb-4">
+					<div class="card-header" id="guessesLeft-Header">
+					</div>
+				  	<div class="card-body" id="guessesLeft">
+				  	</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<!--External Javascript file-->
+	<script src="assets/javascript/game2.js"></script>
 
 </body>
 </html>

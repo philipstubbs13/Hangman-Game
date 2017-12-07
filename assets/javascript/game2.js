@@ -222,7 +222,7 @@ function roundComplete() {
 		}
 
 		else {
-			location.href = "home.html";
+			location.href = "index.html";
 		}
 	}
 	
