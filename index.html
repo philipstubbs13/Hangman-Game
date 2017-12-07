@@ -12,6 +12,10 @@
 	<style>
 	</style>
 	<script src="https://use.fontawesome.com/abd289e58f.js"></script>
+	<!--<audio loop="true" autoplay="true">-->
+  		<source src="assets/audio/Jeopardy-theme-song.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
 
 </head>
 <body>
@@ -28,16 +32,8 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-md-6">
-				<div class="card mb-4">
-				  <div class="card-header">
-				    How to play
-				  </div>
-				  <div class="card-body">
-				    <ol>
-				    	<li>Press any letter (a-z) on the keyboard to guess a letter.</li>
 
+<<<<<<< HEAD
 				    	<li>Keep guessing letters. When you guess a letter, your choice is either correct or incorrect. The letter is added to the "Letters you already guessed" section.</li>
 				    		<ul>
 				    			<li>If correct, the letter you guessed appears in the word.
@@ -50,32 +46,50 @@
 				  </div>
 				</div>
 			</div>
+=======
+		<div class="card mb-4">
+		  <div class="card-header">
+		    How to Play
+		  </div>
+		  <div class="card-body">
+		    <ol>
+		    	<li>Press any letter (a-z) on the keyboard to guess a letter.</li>
 
-			<div class="col-md-6">
-				<div class="card mb-4">
-				  <div class="card-header">
-				    Current word
-				  </div>
-				  <div class="card-body">
-				    <h2 id="underscore">_ _ _ _ _ _ _ _ _ _ </h2>
-				  </div>
-				</div>
-
-				<div class="card mb-4">
-				  <div class="card-header" id="lettersGuessed-Header">
-				  </div>
-				  <div class="card-body" id="lettersGuessed">
-				  </div>
-				</div>
-
-				<div class="card mb-4">
-					<div class="card-header" id="guessesLeft-Header">
-					</div>
-				  	<div class="card-body" id="guessesLeft">
-				  	</div>
-				</div>
-			</div>
+		    	<li>Keep guessing letters. When you guess a letter, your choice is either correct or incorrect. The letter is added to the "Letters you already guessed" section.</li>
+		    		<ul>
+		    			<li>If correct, the letter you guessed appears in the word.
+		    			<li>
+		    				<info>If incorrect, the letter you guessed does not appeared the word. For every incorrect guess, the number of guesses remaining decreases by 1.</info>
+		    		</ul>
+		    	<li>If you correctly guess all the letters in the word before the number of guesses remaining reaches 0, you win. </li>
+		    		<info>You have 13 guesses to guess the word correctly. If you run out of guesses before the entire word is revealed, you lose. Game over.</info>
+		  </div>
 		</div>
+>>>>>>> parent of 62fbdba... updated css to add columns
+
+		<div class="card mb-4">
+		  <div class="card-header">
+		    Current Word
+		  </div>
+		  <div class="card-body">
+		    <h2 id="underscore">_ _ _ _ _ _ _ _ _ _ </h2>
+		  </div>
+		</div>
+
+		<div class="card mb-4">
+		  <div class="card-header" id="lettersGuessed-Header">
+		  </div>
+		  <div class="card-body" id="lettersGuessed">
+		  </div>
+		</div>
+
+		<div class="card mb-4">
+			<div class="card-header" id="guessesLeft-Header">
+			</div>
+		  	<div class="card-body" id="guessesLeft">
+		  	</div>
+		</div>
+
 	</div>
 
 	<!--External Javascript file-->

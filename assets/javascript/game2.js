@@ -2,7 +2,7 @@
 //==================================================================
 //Arrays and Variables
 	//Pre-defined list of words to choose from
-	var options = ["warriors" , "celtics" , "suns" , "cavaliers" , "clippers" , "spurs" , "timberwolves" , "heat" , "raptors" , "grizzlies" , "trailblazers" , "lakers" , "wizards" , "pacers"];
+	var options = ["warriors" , "celtics" , "suns" , "cavaliers" , "clippers" , "spurs" , "timberwolves" , "heat" , "raptors" , "grizzlies" , "trailblazers" , "lakers" , "wizards"];
 
 	//Computer chooses random word from list
 	var randomWord = "";
