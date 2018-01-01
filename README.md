@@ -1,5 +1,11 @@
 # Hangman-Game
 
+## Live
+<a href="https://philipstubbs13.github.io/Hangman-Game/index.html" target="_blank">https://philipstubbs13.github.io/Hangman-Game/index.html</a>
+
+## Screenshot
+<img src="assets/images/hangman2.png" alt="Hangman Game user interface" width="400px" height="320px">
+
 ## Technologies used to create game
 * HTML5
 * CSS
