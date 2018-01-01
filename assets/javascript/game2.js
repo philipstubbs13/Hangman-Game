@@ -18,7 +18,7 @@
 
 	//Create an empty array to hold all the letters not in the random word or that were already guessed.
 	var lettersNotInWord = [""]; 
-	var lettersNotInWordList = [ ];
+	var lettersNotInWordList = [];
 
 	//Counters for wins, losses, and guesses remaining.
 	var wins = 0;
